@@ -123,7 +123,8 @@
                 if (res.data.totalCount != 0) {
                     $.each(res.data.adminGroup.nodes, function (ex, item) {
                         $.each(item.admins, function (ex, admin) {
-                            admin.code = `ID${admin.id()}`
+                            console.log(admin);
+                            admin.code = `ID-${admin.id}`
                             admin.fullName = admin.firstName + " " + admin.lastName;
                         })
                         item.totalUser = `(${item.admins.length})`;
@@ -172,10 +173,65 @@
         });
     }
 
+    //Get Admin
+    self.first = ko.observable(100);
+    self.adminList = ko.observableArray([]);
+    self.getAdmin = () => {
+        self.adminList.removeAll();
+        $.ajax({
+            method: "POST",
+            url: backendUrl + "/graphql",
+            contentType: "application/json",
+            data: JSON.stringify({
+                query: `     query {
+                          admin(first: 100, order: {updatedAt:DESC}) {
+                            totalCount
+                            nodes {
+                              id
+                              avatar
+                              firstName
+                              lastName
+                              phone
+                              email
+                              adminGroup {
+                                 name
+                                 class
+                               }
+                            }
+                          }
+                        }
+                       `
+            }),
+            success: function (res) {
+                if (res.data.totalCount != 0) {
+                    $.each(res.data.admin.nodes, function (ex, item) {
+                        item.selected = false;
+                        item.fullName = item.firstName + " " + item.lastName;
+                        self.adminList.push(self.convertToKoObject(item));
+                    })
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    }
+
     self.callApi = function () {
         self.getUrl();
+        self.getAdmin();
         self.getAccount();
         self.getPermission();
+        self.filterAdmin();
+    }
+
+    self.filterAdmin = () => {
+        $("#search-value").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#adminTable tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
     }
 
     //Action Role

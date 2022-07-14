@@ -15,7 +15,7 @@ namespace PTShop_CMS.Models
         public string? Code { get; set; }
         public string? Name { get; set; }
         public DateTime? CreatedAt { get; set; }
-        public string? Color { get; set; }
+        public string? Class { get; set; }
 
         public virtual ICollection<Admin> Admins { get; set; }
         public virtual ICollection<Permission> Permissions { get; set; }

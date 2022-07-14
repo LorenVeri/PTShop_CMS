@@ -17,6 +17,7 @@ namespace PTShop_CMS.GraphQL.AdminGroup
                     Name = item.Name,
                     CreatedAt = DateTime.Now,
                     Code = item.Code,
+                    Class = item.Class
                 };
 
                 context.AdminGroups.Add(adminGroup);
@@ -41,6 +42,7 @@ namespace PTShop_CMS.GraphQL.AdminGroup
                 var adminGroup = context.AdminGroups.Include(z => z.Permissions).FirstOrDefault(x => x.Id == id);
                 adminGroup.Name = item.Name;
                 adminGroup.Code = item.Code;
+                adminGroup.Class = item.Class;
 
                 var adminGroupId = adminGroup.Id;
                 foreach (var permiss in item.ListPermissions)

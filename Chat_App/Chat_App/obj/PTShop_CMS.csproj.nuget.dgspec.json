@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\asus\\Desktop\\Chat_App\\Chat_App\\PTShop_CMS.csproj": {}
+    "C:\\Users\\asus\\Desktop\\Git_Clone\\PTShop_CMS\\Chat_App\\Chat_App\\PTShop_CMS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\asus\\Desktop\\Chat_App\\Chat_App\\PTShop_CMS.csproj": {
+    "C:\\Users\\asus\\Desktop\\Git_Clone\\PTShop_CMS\\Chat_App\\Chat_App\\PTShop_CMS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\asus\\Desktop\\Chat_App\\Chat_App\\PTShop_CMS.csproj",
+        "projectUniqueName": "C:\\Users\\asus\\Desktop\\Git_Clone\\PTShop_CMS\\Chat_App\\Chat_App\\PTShop_CMS.csproj",
         "projectName": "PTShop_CMS",
-        "projectPath": "C:\\Users\\asus\\Desktop\\Chat_App\\Chat_App\\PTShop_CMS.csproj",
+        "projectPath": "C:\\Users\\asus\\Desktop\\Git_Clone\\PTShop_CMS\\Chat_App\\Chat_App\\PTShop_CMS.csproj",
         "packagesPath": "C:\\Users\\asus\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\asus\\Desktop\\Chat_App\\Chat_App\\obj\\",
+        "outputPath": "C:\\Users\\asus\\Desktop\\Git_Clone\\PTShop_CMS\\Chat_App\\Chat_App\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\asus\\AppData\\Roaming\\NuGet\\NuGet.Config",

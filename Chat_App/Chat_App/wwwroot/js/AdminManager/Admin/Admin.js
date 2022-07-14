@@ -119,6 +119,7 @@
                               updatedAt
                               adminGroup {
                                  name
+                                 class
                                }
                             }
                           }

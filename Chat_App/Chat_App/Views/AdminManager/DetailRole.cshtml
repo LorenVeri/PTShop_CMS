@@ -2617,7 +2617,7 @@
 										</svg>
 									</span>
 									<!--end::Svg Icon-->
-									<input type="text" data-kt-roles-table-filter="search" class="form-control form-control-solid w-250px ps-15" placeholder="Tìm kiếm thành viên" />
+									<input id="search-value" type="text" data-kt-roles-table-filter="search" class="form-control form-control-solid w-250px ps-15" placeholder="Tìm kiếm thành viên" />
 								</div>
 								<!--end::Search-->
 								<!--begin::Button-->
@@ -2652,7 +2652,7 @@
 								</thead>
 								<!--end::Table head-->
 								<!--begin::Table body-->
-								<tbody data-bind="foreach: admins" class="fw-bold text-gray-600">
+								<tbody id="adminTable" data-bind="foreach: admins" class="fw-bold text-gray-600">
 									<tr>
 										<!--begin::ID-->
 										<td data-bind="text: code"></td>

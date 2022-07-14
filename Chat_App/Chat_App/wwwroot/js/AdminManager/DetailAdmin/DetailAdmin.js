@@ -48,6 +48,7 @@
                           admin(first: 1, where: {id: {eq: $data}}) {
                             totalCount
                             nodes {
+                              id
                               avatar
                               firstName
                               lastName
@@ -56,6 +57,10 @@
                               password
                               createdAt
                               updatedAt
+                             adminGroup {
+                                    name
+                                    id
+                                  }
                             }
                           }
                         }
@@ -87,6 +92,7 @@
                           admin(first: 1, where: { id: { eq: $data } }) {
                             totalCount
                             nodes {
+                              id
                               avatar
                               firstName
                               lastName
@@ -95,6 +101,10 @@
                               password
                               createdAt
                               updatedAt
+                                adminGroup {
+                                        name
+                                        id
+                                      }
                             }
                           }
                         }
@@ -106,12 +116,13 @@
             data: JSON.stringify({
                 query: query,
                 variables: {
-                    "data": id
+                    "data": 1
                 }
             }),
             success: function (res) {
                 if (res.data.totalCount != 0) {
                     $.each(res.data.admin.nodes, function (ex, item) {
+                        item.code = `ID-${item.id}`
                         item.fullName = item.firstName + " " + item.lastName;
                         self.adminById(self.convertToKoObject(item));
                     })
@@ -127,6 +138,7 @@
     self.callApi = function () {
         self.getUrl();
         self.getAccount();
+        self.calendarOrder();
     }
 
     //Action Role
@@ -179,6 +191,22 @@
                 self.showtoastError('Thất bại', `Vui lòng thử lại`)
             }
         });
+    }
+
+    self.calendarOrder = () => {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            timeZone: 'UTC',
+            initialView: 'dayGridMonth',
+            events: 'https://fullcalendar.io/api/demo-feeds/events.json',
+            editable: true,
+            selectable: true,
+            eventClick: function (info) {
+                info.el.style.borderColor = 'red';
+                $('#kt_modal_add_schedule').modal('show');
+            }
+        });
+        calendar.render();
     }
 
 }

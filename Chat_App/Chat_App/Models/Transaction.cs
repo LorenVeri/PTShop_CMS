@@ -8,6 +8,7 @@ namespace PTShop_CMS.Models
         public Transaction()
         {
             Orders = new HashSet<Order>();
+            TransactionProcessings = new HashSet<TransactionProcessing>();
         }
 
         public int Id { get; set; }
@@ -15,6 +16,7 @@ namespace PTShop_CMS.Models
         public string? UserName { get; set; }
         public string? UserEmail { get; set; }
         public int? UserPhone { get; set; }
+        public string? UserAdress { get; set; }
         public bool? Passersby { get; set; }
         public int? Amount { get; set; }
         public string? Message { get; set; }
@@ -23,8 +25,10 @@ namespace PTShop_CMS.Models
         public string? Security { get; set; }
         public DateTime? CreatedAt { get; set; }
         public int? State { get; set; }
+        public int? TimeOut { get; set; }
 
         public virtual User? Use { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<TransactionProcessing> TransactionProcessings { get; set; }
     }
 }

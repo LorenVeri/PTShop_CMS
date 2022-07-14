@@ -29,8 +29,8 @@ namespace PTShop_CMS.Models
         public virtual DbSet<ProductPrice> ProductPrices { get; set; } = null!;
         public virtual DbSet<Role> Roles { get; set; } = null!;
         public virtual DbSet<Transaction> Transactions { get; set; } = null!;
+        public virtual DbSet<TransactionProcessing> TransactionProcessings { get; set; } = null!;
         public virtual DbSet<User> Users { get; set; } = null!;
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Account>(entity =>
@@ -93,11 +93,11 @@ namespace PTShop_CMS.Models
 
                 entity.Property(e => e.Id).HasColumnName("ID");
 
-                entity.Property(e => e.Code).HasMaxLength(50);
+                entity.Property(e => e.Class)
+                    .HasMaxLength(255)
+                    .IsUnicode(false);
 
-                entity.Property(e => e.Color)
-                    .HasMaxLength(10)
-                    .IsFixedLength();
+                entity.Property(e => e.Code).HasMaxLength(50);
 
                 entity.Property(e => e.CreatedAt).HasColumnType("datetime");
 
@@ -268,9 +268,7 @@ namespace PTShop_CMS.Models
             {
                 entity.ToTable("Order");
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("id");
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.AmountOrder).HasColumnName("amountOrder");
 
@@ -487,7 +485,13 @@ namespace PTShop_CMS.Models
 
                 entity.Property(e => e.State).HasColumnName("state");
 
+                entity.Property(e => e.TimeOut).HasColumnName("timeOut");
+
                 entity.Property(e => e.UseId).HasColumnName("use_id");
+
+                entity.Property(e => e.UserAdress)
+                    .HasMaxLength(255)
+                    .HasColumnName("user_adress");
 
                 entity.Property(e => e.UserEmail)
                     .HasMaxLength(100)
@@ -504,6 +508,27 @@ namespace PTShop_CMS.Models
                     .WithMany(p => p.Transactions)
                     .HasForeignKey(d => d.UseId)
                     .HasConstraintName("FK_Transaction_User");
+            });
+
+            modelBuilder.Entity<TransactionProcessing>(entity =>
+            {
+                entity.ToTable("TransactionProcessing");
+
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.AdminId).HasColumnName("AdminID");
+
+                entity.Property(e => e.TransactionId).HasColumnName("TransactionID");
+
+                entity.HasOne(d => d.Admin)
+                    .WithMany(p => p.TransactionProcessings)
+                    .HasForeignKey(d => d.AdminId)
+                    .HasConstraintName("FK_TransactionProcessing_Admin");
+
+                entity.HasOne(d => d.Transaction)
+                    .WithMany(p => p.TransactionProcessings)
+                    .HasForeignKey(d => d.TransactionId)
+                    .HasConstraintName("FK_TransactionProcessing_Transaction");
             });
 
             modelBuilder.Entity<User>(entity =>

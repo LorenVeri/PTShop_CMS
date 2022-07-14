@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bEH//p7UB5Fq8X+hQjkrZTm1CVWKso9uCdCyuvtfesVXsV8gFAhCHAlFzPW6i7e7/HR0q2HCT73pd4wsnyqjHA==",
+  "dgSpecHash": "quf2Fjg48uL904vfYqxakyxVGL7+QMYKPy359NVGJURz+b2FSqBS4l4iMvcaG9zf4M/fuslOFY7DoZJksiCEbw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\asus\\Desktop\\Chat_App\\Chat_App\\PTShop_CMS.csproj",
+  "projectFilePath": "C:\\Users\\asus\\Desktop\\Git_Clone\\PTShop_CMS\\Chat_App\\Chat_App\\PTShop_CMS.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\asus\\.nuget\\packages\\greendonut\\12.10.0\\greendonut.12.10.0.nupkg.sha512",
     "C:\\Users\\asus\\.nuget\\packages\\hotchocolate\\12.10.0\\hotchocolate.12.10.0.nupkg.sha512",

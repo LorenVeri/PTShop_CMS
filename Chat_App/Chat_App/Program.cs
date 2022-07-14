@@ -5,6 +5,8 @@ using PTShop_CMS.GraphQL.Banner;
 using PTShop_CMS.GraphQL.Contact;
 using PTShop_CMS.GraphQL.Coupon;
 using PTShop_CMS.GraphQL.Role;
+using PTShop_CMS.GraphQL.Transaction;
+using PTShop_CMS.GraphQL.TransactionProcessing;
 using PTShop_CMS.GrapQL.Category;
 using PTShop_CMS.GrapQL.Product;
 using PTShop_CMS.GrapQL.Product_Media;
@@ -57,6 +59,7 @@ builder.Services
         .AddTypeExtension<QueryAdmin>()
         .AddTypeExtension<QueryAdminGroup>()
         .AddTypeExtension<QueryRole>()
+        .AddTypeExtension<QueryTransaction>()
         .AddMutationType(x => x.Name("Mutation"))
         .AddTypeExtension<MutationCategory>()
         .AddTypeExtension<MutationBanner>()
@@ -68,6 +71,8 @@ builder.Services
         .AddTypeExtension<MutationAdmin>()
         .AddTypeExtension<MutationAdminGroup>()
         .AddTypeExtension<MutationRole>()
+        .AddTypeExtension<MutationTransaction>()
+        .AddTypeExtension<MutationTransactionProcessing>()
         .AddProjections()
         .AddFiltering()
         .AddSorting();
@@ -99,6 +104,11 @@ app.MapControllerRoute(
         name: "DetailAdmin",
         defaults: new { controller = "AdminManager", action = "DetailAdmin" },
         pattern: "admin/{id}");
+
+app.MapControllerRoute(
+        name: "DetailOrder",
+        defaults: new { controller = "Order", action = "DetailOrder" },
+        pattern: "/hoa-don/{id}");
 
 app.MapControllerRoute(
     name: "default",

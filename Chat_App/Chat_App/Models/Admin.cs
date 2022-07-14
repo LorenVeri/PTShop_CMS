@@ -5,6 +5,11 @@ namespace PTShop_CMS.Models
 {
     public partial class Admin
     {
+        public Admin()
+        {
+            TransactionProcessings = new HashSet<TransactionProcessing>();
+        }
+
         public int Id { get; set; }
         public string? Avatar { get; set; }
         public string? FirstName { get; set; }
@@ -18,5 +23,6 @@ namespace PTShop_CMS.Models
         public DateTime? LastLogin { get; set; }
 
         public virtual AdminGroup? AdminGroup { get; set; }
+        public virtual ICollection<TransactionProcessing> TransactionProcessings { get; set; }
     }
 }

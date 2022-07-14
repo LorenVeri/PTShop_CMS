@@ -101,6 +101,7 @@
                             adminGroup {
                               id
                               name
+                              class
                             }
                           }
                         }
@@ -190,6 +191,16 @@
     self.callApi = function () {
         self.getAccount();
         self.getPermission();
+        self.filterPermission();
+    }
+
+    self.filterPermission = () => {
+        $("#search-value").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#permissionTable tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
     }
 
     self.confirmDeletePermission = (item) => {

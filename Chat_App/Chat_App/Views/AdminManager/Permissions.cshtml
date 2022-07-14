@@ -2265,7 +2265,7 @@
 									</svg>
 								</span>
 								<!--end::Svg Icon-->
-								<input type="text" data-kt-permissions-table-filter="search" class="form-control form-control-solid w-250px ps-15" placeholder="Search Permissions" />
+								<input id="search-value" type="text" data-kt-permissions-table-filter="search" class="form-control form-control-solid w-250px ps-15" placeholder="Search Permissions" />
 							</div>
 							<!--end::Search-->
 						</div>
@@ -2304,7 +2304,7 @@
 							</thead>
 							<!--end::Table head-->
 							<!--begin::Table body-->
-							<tbody data-bind="foreach: $root.permissionList" class="fw-bold text-gray-600">
+							<tbody id="permissionTable" data-bind="foreach: $root.permissionList" class="fw-bold text-gray-600">
 								<tr>
 									<!--begin::Name=-->
 									<td data-bind="text: name"></td>
@@ -2312,7 +2312,7 @@
 									<!--begin::Assigned to=-->
 									<!--ko if: permissions().length !=0-->
 									<td data-bind="foreach: permissions">
-										<a data-bind="text: adminGroup.name" href="~/chi-tiet-chuc-vu" class="badge badge-light-primary fs-7 m-1"></a>
+										<a data-bind="text: adminGroup.name,attr:{class: adminGroup.class}" href="~/chi-tiet-chuc-vu" class="badge badge-light-primary fs-7 m-1"></a>
 									</td>
 									<!--/ko-->
 									<!--ko if: permissions().length == 0-->
